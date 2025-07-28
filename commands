@@ -1,0 +1,6 @@
+
+gh run list --workflow=MyFirstWorkflow.yml
+
+gh workflow run MyFirstWorkflow.yml -f homedrive=/home -f logLevel=warning -f tag=true -f environment=Staging
+
+gh workflow run MyFirstWorkflow.yml -f homedrive=/home -f tag=true -f environment=Staging

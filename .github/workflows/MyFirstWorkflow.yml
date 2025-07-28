@@ -25,10 +25,10 @@ on:
         description: 'Apply tag after successfull test run'
         required: true
         type: boolean
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
-        required: true
+      # environment:
+      #   description: 'Environment to run tests against'
+      #   type: environment
+      #   required: true
 
 jobs:
   MyFirstJob:
@@ -39,7 +39,7 @@ jobs:
           echo "Homedrive: ${{ inputs.homedrive }}"
           echo "Log level: ${{ inputs.logLevel }}"
           echo "Tag source: ${{ inputs.tag }}"
-          echo "Environment ${{ inputs.environment }}"
+          # echo "Environment ${{ inputs.environment }}"
         name: Workflow Inputs
         if: ${{ github.event_name == 'workflow_dispatch' }}
 
@@ -49,7 +49,7 @@ jobs:
         if: ${{ github.event_name == 'repository_dispatch' }}
 
 
-      - run: echo "👋 Hello World!"
+      - run: echo "👋 Hi there!"
 
       - name: Checkout
         uses: actions/checkout@v4

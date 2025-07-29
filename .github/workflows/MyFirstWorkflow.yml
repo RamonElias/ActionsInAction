@@ -50,6 +50,14 @@ jobs:
 
       - run: echo "👋 Hi there!"
 
+      - name: Set the value
+        id: step_one
+        run: |
+          echo "action_state=green" >> "$GITHUB_ENV"
+
+      - run: |
+          echo "${{ env.action_state }}" # This will output 'green'
+
       - name: Checkout
         uses: actions/checkout@v4
 

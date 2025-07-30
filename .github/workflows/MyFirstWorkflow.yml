@@ -64,7 +64,7 @@ jobs:
 
       - name: List files in repository
         run: |
-          echo "The repository ${{ github.repository }} contains th efollowing files:"
+          echo "The repository ${{ github.repository }} contains the following files:"
           tree
 
       - run: echo '### Hi there! :rocket:' >> $GITHUB_STEP_SUMMARY

@@ -28,3 +28,16 @@ gh api -X POST -H "Accept: application/vnd.github.v3+json" \
 -f event_type=event1 \
 -f 'client_payload[passed]=false' \
 -f 'client_payload[message]=Error: timeout'
+
+gh secret set secret-name
+gh secret set secret-name < secret.txt
+
+gh variable set var-name
+gh variable set var-name --body config-value
+
+gh secret set secret-name --env environment-name
+gh secret set secret-name --org org -v private
+gh secret set secret-name --org org -v selected -r repo
+
+
+

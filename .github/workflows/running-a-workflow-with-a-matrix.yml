@@ -5,7 +5,8 @@ run-name: workflow run by @${{ github.actor }}
 on:
   push:
     branches:
-      - main
+      # - main
+      - foobarbaz
 
 jobs:
   create-new-issue:

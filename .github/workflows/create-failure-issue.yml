@@ -53,7 +53,7 @@ jobs:
             "title": "Failure: ${{ inputs.title }}",
             "body": "Details: ${{ inputs.body }}"
             }' \
-          --fail | jq '.number') 
+          --fail | jq '.number')
           echo "inum=$response" >> $GITHUB_OUTPUT
 
       - name: Set debug

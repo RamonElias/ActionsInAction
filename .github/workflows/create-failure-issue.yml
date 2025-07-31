@@ -41,3 +41,10 @@ jobs:
             "body": "Details: ${{ inputs.body }}"
             }' \
           --fail
+
+      - name: Set debug
+        id: set-debug-stage
+        run: echo "BUILD_STAGE=debug" >> $GITHUB_OUTPUT
+
+      - name: Get stage
+        run: echo "The build stage is ${{ steps.set-debug-stage.outputs.BUILD_STAGE }}"

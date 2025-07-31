@@ -1,9 +1,13 @@
 
 gh run list --workflow=MyFirstWorkflow.yml
 
+gh run list --workflow=create-failure-issue.yml
+
 gh workflow run MyFirstWorkflow.yml -f homedrive=/home -f logLevel=warning -f tag=true -f environment=Staging
 
 gh workflow run MyFirstWorkflow.yml -f homedrive=/home -f tag=true -f environment=Staging
+
+gh workflow run create-failure-issue.yml -f title="failure issue #2" -f body="failure issue #2 body"
 
 curl \
 -X POST \
@@ -38,6 +42,5 @@ gh variable set var-name --body config-value
 gh secret set secret-name --env environment-name
 gh secret set secret-name --org org -v private
 gh secret set secret-name --org org -v selected -r repo
-
 
 

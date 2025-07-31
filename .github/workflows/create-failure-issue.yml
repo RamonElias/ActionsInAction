@@ -74,5 +74,6 @@ jobs:
         env:
           INUM: ${{ needs.create_issue_on_failure.outputs.inum }}
           BUILD_STAGE: ${{ needs.create_issue_on_failure.outputs.build-stage }}
-        run: echo "The issue number is $INUM"
-        run: echo "The build stage is $BUILD_STAGE"
+        run: |
+          echo "The issue number is $INUM"
+          echo "The build stage is $BUILD_STAGE"

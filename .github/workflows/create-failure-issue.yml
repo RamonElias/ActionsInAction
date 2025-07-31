@@ -43,6 +43,7 @@ jobs:
           echo "$GITHUB_CONTEXT"
 
       - name: Create issue using REST API
+        id: set-inum-stage
         run: |
           response=$(curl --request POST \
           --url https://api.github.com/repos/${{ github.repository }}/issues \
@@ -61,15 +62,17 @@ jobs:
 
       - name: Get stage
         run: echo "The build stage is ${{ steps.set-debug-stage.outputs.BUILD_STAGE }}"
-  #   outputs:
-  #     build-stage: ${{ steps.set-debug-stage.outputs.BUILD_STAGE }}
-  #
-  # report:
-  #   runs-on: ubuntu-latest
-  #   needs: create_issue_on_failure
-  #   steps:
-  #     - name: Get stage
-  #       env:
-  #         BUILD_STAGE: ${{ needs.create_issue_on_failure.outputs.build-stage }}
-  #       run: echo "The build stage is $BUILD_STAGE"
+    outputs:
+      inum: ${{ steps.set-inum-stage.outputs.inum }}
+      build-stage: ${{ steps.set-debug-stage.outputs.BUILD_STAGE }}
 
+  report:
+    runs-on: ubuntu-latest
+    needs: create_issue_on_failure
+    steps:
+      - name: Get stage
+        env:
+          INUM: ${{ needs.create_issue_on_failure.outputs.inum }}
+          BUILD_STAGE: ${{ needs.create_issue_on_failure.outputs.build-stage }}
+        run: echo "The issue number is $INUM"
+        run: echo "The build stage is $BUILD_STAGE"

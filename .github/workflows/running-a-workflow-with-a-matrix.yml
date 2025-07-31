@@ -13,7 +13,7 @@ jobs:
       matrix:
         prod: [prod1, prod2]
         level: [dev, stage, prod]
-    uses: /RamonElias/ActionsInAction/.github/workflows/create-failure-issue.yml@v1
+    uses: ./.github/workflows/create-failure-issue.yml@v1
     secrets: inherit
     with:
       title: "${{ matrix.prod}} issue"

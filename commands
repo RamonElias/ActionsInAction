@@ -3,11 +3,21 @@ gh run list --workflow=MyFirstWorkflow.yml
 
 gh run list --workflow=create-failure-issue.yml
 
+gh run view 1234567 --log
+gh run view 16658688268 --log
+
+LAST_RUN_ID=$(gh run list --workflow=MyFirstWorkflow.yml --limit 1 --json databaseId --jq '.[0].databaseId')
+LAST_RUN_ID=$(gh run list --workflow=create-failure-issue.yml --limit 1 --json databaseId --jq '.[0].databaseId')
+echo $LAST_RUN_ID
+gh run view $LAST_RUN_ID --log
+
 gh workflow run MyFirstWorkflow.yml -f homedrive=/home -f logLevel=warning -f tag=true -f environment=Staging
 
 gh workflow run MyFirstWorkflow.yml -f homedrive=/home -f tag=true -f environment=Staging
 
 gh workflow run create-failure-issue.yml -f title="failure issue #2" -f body="failure issue #2 body"
+
+issue_message='issue' ; dt=`date '+%d/%m/%Y_%H:%M:%S'` ; gh workflow run create-failure-issue.yml -f title="$issue_message $dt" -f body="$issue_message $dt body"
 
 curl \
 -X POST \
@@ -42,5 +52,4 @@ gh variable set var-name --body config-value
 gh secret set secret-name --env environment-name
 gh secret set secret-name --org org -v private
 gh secret set secret-name --org org -v selected -r repo
-
 

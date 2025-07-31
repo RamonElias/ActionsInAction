@@ -32,8 +32,8 @@ on:
 
 jobs:
   NewJob:
-    # runs-on: ubuntu-latest
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+    # runs-on: self-hosted
 
     steps:
       - run: |

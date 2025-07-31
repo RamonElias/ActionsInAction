@@ -1,4 +1,5 @@
-name: My First Workflow
+# name: My First Workflow
+run-name: workflow run by @${{ github.actor }}
 
 on:
   push:
@@ -69,8 +70,4 @@ jobs:
 
       - run: echo '### Hi there! :rocket:' >> $GITHUB_STEP_SUMMARY
       - run: echo '### Love this feature! :medal_sports:' >> $GITHUB_STEP_SUMMARY
-      - run: echo '<h2>Great feature!</h2>' >> $GITHUB_STEP_SUMMARY
-      - run: echo '### Hi there! :rocket:' >> $GITHUB_STEP_SUMMARY
-      - run: echo '### Love this feature! :medal_sports:' >> $GITHUB_STEP_SUMMARY
-      - run: echo '<h2>Great feature!</h2>' >> $GITHUB_STEP_SUMMARY
       - run: echo '<h2>Great feature!</h2>' >> $GITHUB_STEP_SUMMARY

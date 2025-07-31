@@ -68,8 +68,11 @@ jobs:
           echo "The repository ${{ github.repository }} contains the following files:"
           tree
 
-      - run: echo $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID && echo $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/workflows/$GITHUB_WORKFLOW_ID >> $GITHUB_STEP_SUMMARY
+      - run: |
+          echo "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          echo "The runner's operating system is $RUNNER_OS"
 
       - run: echo '### Hi there! :rocket:' >> $GITHUB_STEP_SUMMARY
       - run: echo '### Love this feature! :medal_sports:' >> $GITHUB_STEP_SUMMARY
       - run: echo '<h2>Great feature!</h2>' >> $GITHUB_STEP_SUMMARY
+

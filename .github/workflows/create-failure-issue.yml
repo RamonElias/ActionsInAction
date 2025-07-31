@@ -30,6 +30,18 @@ jobs:
       issues: write
 
     steps:
+      - uses: actions/checkout@v3
+
+      - name: Show repo info
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo Repository is ${{ github.repository }}
+          echo "::debug::Debugging is turned on for steps and runner"
+          echo Size of local repository area is `du -hs ${{ github.workspace }}`
+          echo Context dump follows:
+          echo "$GITHUB_CONTEXT"
+
       - name: Create issue using REST API
         run: |
           curl --request POST \
@@ -59,4 +71,3 @@ jobs:
         env:
           BUILD_STAGE: ${{ needs.create_issue_on_failure.outputs.build-stage }}
         run: echo "The build stage is $BUILD_STAGE"
-
